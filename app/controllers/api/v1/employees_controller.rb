@@ -3,7 +3,7 @@ class Api::V1::EmployeesController < ApplicationController
 
   # GET /employees
   def index
-    @employees = employee.all
+    @employees = Employee.all
 
     render json: @employees.includes(:employees)
   end
@@ -15,7 +15,7 @@ class Api::V1::EmployeesController < ApplicationController
 
   # POST /employees
   def create
-    @employee = employee.new(new_employee_params)
+    @employee = Employee.new(new_employee_params)
 
     if @employee.save
       render json: @employee, status: :created, location: @api_v1_employee
@@ -41,7 +41,7 @@ class Api::V1::EmployeesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
-      @employee = employee.find(params[:id])
+      @employee = Employee.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
