@@ -46,7 +46,7 @@ class Api::V1::EmployeesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def employee_params
-      params.require(:employee).permit(:name, :place_id)
+      params.require(:place_id).permit(:name)
     end
 
     def new_employee_params
