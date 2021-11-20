@@ -18,7 +18,7 @@ class Api::V1::PlacesController < ApplicationController
     @place = Place.new(new_place_params)
 
     if @place.save
-      render json: @place, status: :created, location: @place
+      render json: @place, status: :created, location: @api_v1_place
     else
       render json: @place.errors, status: :unprocessable_entity
     end
