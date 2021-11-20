@@ -50,6 +50,6 @@ class Api::V1::EmployeesController < ApplicationController
     end
 
     def new_employee_params
-      params.permit(:name, :place_id)
+      params.require(:place_id).permit(:name)
     end
 end
