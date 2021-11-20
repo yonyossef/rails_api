@@ -5,7 +5,7 @@ class Api::V1::EmployeesController < ApplicationController
   def index
     @employees = Employee.all
 
-    render json: @employees.includes(:employees)
+    render json: @employees
   end
 
   # GET /employees/1
@@ -46,10 +46,10 @@ class Api::V1::EmployeesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def employee_params
-      params.require(:employee).permit(:name)
+      params.require(:employee).permit(:name, :place_id)
     end
 
     def new_employee_params
-      params.permit(:name)
+      params.permit(:name, :place_id)
     end
 end
