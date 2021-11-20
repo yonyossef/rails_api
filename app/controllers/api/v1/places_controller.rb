@@ -15,7 +15,7 @@ class Api::V1::PlacesController < ApplicationController
 
   # POST /places
   def create
-    @place = Place.new(place_params)
+    @place = Place.new(new_place_params)
 
     if @place.save
       render json: @place, status: :created, location: @place
@@ -47,5 +47,9 @@ class Api::V1::PlacesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def place_params
       params.require(:place).permit(:name)
+    end
+
+    def new_place_params
+      params.permit(:name)
     end
 end
