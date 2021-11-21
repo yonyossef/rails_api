@@ -15,7 +15,7 @@ class Api::V1::EmployeesController < ApplicationController
 
   # POST /employees
   def create
-    @employee = Employee.new(new_employee_params)
+    @employee = Employee.new(employee_params)
 
     if @employee.save
       render json: @employee, status: :created, location: @api_v1_employee
@@ -46,10 +46,6 @@ class Api::V1::EmployeesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def employee_params
-      params.require(:place_id).permit(:name)
-    end
-
-    def new_employee_params
-      params.require(:place_id).permit(:name)
+      params.permit(:place_id, :name)
     end
 end
