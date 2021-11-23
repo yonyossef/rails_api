@@ -4,7 +4,6 @@ class Api::V1::PlacesController < ApplicationController
   # GET /places
   def index
     @places = Place.all
-
     render json: @places.includes(:employees)
   end
 
