@@ -25,7 +25,7 @@ class Api::V1::PlacesController < ApplicationController
 
   # PATCH/PUT /places/1
   def update
-    if @place.update(place_params)
+    if @place.update(new_place_params)
       render json: @place
     else
       render json: @place.errors, status: :unprocessable_entity
